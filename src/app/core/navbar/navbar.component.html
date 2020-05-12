@@ -1,0 +1,29 @@
+<nav class="navbar">
+
+  <div class="container">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="pi pi-bars"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <ul class="navbar-menu" [hidden]="!exibindoMenu">
+    <li class="navbar-usuario">{{ auth.jwtPayload?.nome_completo }}</li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+     ><a routerLink="/cozinhas">Cozinhas</a></li>
+
+     <li class="navbar-menuitem" routerLinkActive="ativo"
+     *ngIf="auth.temPermissao('EDITAR_RESTAURANTES')"><a routerLink="/produtos">Produtos</a></li>
+
+     <li class="navbar-menuitem" routerLinkActive="ativo"
+     *ngIf="auth.temPermissao('EDITAR_RESTAURANTES')"><a routerLink="/restaurantes">Restaurantes</a></li>
+
+     <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('EDITAR_USUARIOS_GRUPOS_PERMISSOES')"><a routerLink="/usuarios">Usuários</a></li>
+
+    <li class="navbar-menuitem"><a href="#">Logout</a></li>
+  </ul>
+
+</nav>

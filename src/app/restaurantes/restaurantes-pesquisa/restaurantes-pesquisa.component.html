@@ -1,0 +1,78 @@
+<div class="container">
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Restaurantes</h1>
+    </div>
+
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <label>Nome</label>
+      <input pInputText type="text">
+    </div>
+    <div class="ui-g-12 ui-md-2 ui-fluid">
+      <label>Taxa Frete</label>
+      <input pInputText type="text">
+    </div>
+    <div class="ui-g-12 ui-md-2 ui-fluid">
+      <label>Cozinha</label>
+      <input pInputText type="text">
+    </div>
+
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Pesquisar"></button>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-table [value]="restaurantes" [rows]="5" [paginator]="true"
+            [responsive]="true">
+        <ng-template let-restaurante pTemplate="header">
+          <tr>
+            <th> Id </th>
+            <th> Nome </th>
+            <th> Cozinha </th>
+            <th> Taxa Frete </th>
+            <th class="col-acoes-header-grande"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-restaurante>
+          <tr>
+            <td>{{restaurante.id}}</td>
+            <td>{{restaurante.nome}}</td>
+            <td>{{restaurante.cozinha.nome}}</td>
+            <td>{{restaurante.taxaFrete}}</td>
+            <td class="col-acoes-grande">
+              <button pButton icon="pi pi-thumbs-up" style="margin-right: 5px"
+                pTooltip="Ativar" tooltipPosition="top"
+                (click)="ativar(restaurante)"></button>
+
+              <button pButton icon="pi pi-thumbs-down" style="margin-right: 5px"
+                pTooltip="Inativar" tooltipPosition="top"
+                (click)="inativar(restaurante)"></button>
+
+                <button pButton icon="pi pi-unlock" style="margin-right: 5px"
+                pTooltip="Abrir" tooltipPosition="top"
+                (click)="abrir(restaurante)"></button>
+
+                <button pButton icon="pi pi-lock" style="margin-right: 5px"
+                pTooltip="Fechar" tooltipPosition="top"
+                (click)="fechar(restaurante)"></button>
+
+                <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" style="margin-right: 3px"></a>
+
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Novo Usuário"></a>
+    </div>
+  </div>
+
+</div>

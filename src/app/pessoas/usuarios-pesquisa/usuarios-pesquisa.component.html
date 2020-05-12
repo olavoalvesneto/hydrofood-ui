@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Usuários</h1>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Nome</label>
+      <input pInputText type="text">
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Pesquisar"></button>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-table [value]="usuarios" [rows]="5" [paginator]="true"
+            [responsive]="true">
+        <ng-template let-usuario pTemplate="header">
+          <tr>
+            <th> Id </th>
+            <th> Nome </th>
+            <th> E-mail </th>
+            <th class="col-acoes-header"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-usuario>
+          <tr>
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.email}}</td>
+            <td class="col-acoes">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" style="margin-right: 3px"></a>
+              <button pButton icon="pi pi-trash"
+                pTooltip="Excluir" tooltipPosition="top"
+                (click)="excluir(usuario)"></button>
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Novo Usuário"></a>
+    </div>
+  </div>
+
+</div>
